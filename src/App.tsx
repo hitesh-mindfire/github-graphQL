@@ -16,7 +16,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-500 to-blue-500 text-white p-8">
       <div className="container mx-auto p-8 bg-white rounded-lg shadow-xl text-gray-900">
-        <h1 className="text-4xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500">
+        <h1 className="text-4xl p-2 font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500">
           GitHub Repository Dashboard
         </h1>
 
