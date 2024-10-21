@@ -22,7 +22,7 @@ const RepoList: React.FC<RepoListProps> = ({ username, onSelectRepo }) => {
 
   return (
     <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {data.user.repositories.nodes.map((repo: any) => (
+      {data?.user?.repositories?.nodes?.map((repo: any) => (
         <li
           key={repo.name}
           className="border border-gray-300 p-4 rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-blue-600 text-white cursor-pointer hover:bg-gradient-to-l hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105"
