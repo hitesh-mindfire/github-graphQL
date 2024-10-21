@@ -7,6 +7,7 @@ import { GET_REPOSITORIES } from "../services/Query";
 const RepoList: React.FC<RepoListProps> = ({ username, onSelectRepo }) => {
   const { loading, error, data } = useQuery(GET_REPOSITORIES, {
     variables: { login: username },
+    skip: !username,
   });
 
   if (loading) return <Loader />;

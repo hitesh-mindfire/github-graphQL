@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import RepoList from "./components/RepoList";
 
 const App: React.FC = () => {
-  const [username, setUsername] = useState("octocat");
-  const [searchValue, setSearchValue] = useState("");
-
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const [username, setUsername] = useState(
+    location.state?.username || "octocat"
+  );
+  const [searchValue, setSearchValue] = useState(
+    location.state?.searchValue || ""
+  );
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +25,6 @@ const App: React.FC = () => {
           GitHub Repository Dashboard
         </h1>
 
-        {/* Search Input and Button */}
         <form
           onSubmit={handleSearch}
           className="mb-6 flex flex-col md:flex-row md:gap-4"
@@ -39,12 +43,12 @@ const App: React.FC = () => {
             Search
           </button>
         </form>
-
-        {/* Repo List */}
         <RepoList
           username={username}
           onSelectRepo={(repo) => {
-            navigate(`/repo/${repo.owner}/${repo.name}`);
+            navigate(`/repo/${repo.owner}/${repo.name}`, {
+              state: { username, searchValue },
+            });
           }}
         />
       </div>
