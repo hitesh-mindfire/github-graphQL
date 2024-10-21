@@ -34,10 +34,10 @@ const RepoList: React.FC<RepoListProps> = ({ username, onSelectRepo }) => {
             {repo.description || "No description available"}
           </p>
           <div className="mt-2 text-sm">
-            <span className="inline-flex items-center bg-gray-800 bg-opacity-30 rounded-full px-2 py-1 text-xs font-medium text-white">
+            <span className="inline-flex items-center bg-gray-800 bg-opacity-40 rounded-full px-2 py-1 text-xs font-medium text-white">
               ⭐ {repo.stargazerCount}
             </span>
-            <span className="inline-flex items-center bg-gray-800 bg-opacity-30 rounded-full px-2 py-1 text-xs font-medium text-white ml-2">
+            <span className="inline-flex items-center bg-gray-800 bg-opacity-40 rounded-full px-2 py-1 text-xs font-medium text-white ml-2">
               🍴 {repo.forkCount}
             </span>
           </div>
