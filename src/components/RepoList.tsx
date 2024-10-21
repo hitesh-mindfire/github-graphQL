@@ -1,26 +1,8 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Loader from "./Loader";
-
-const GET_REPOSITORIES = gql`
-  query ($login: String!) {
-    user(login: $login) {
-      repositories(first: 10) {
-        nodes {
-          name
-          description
-          stargazerCount
-          forkCount
-        }
-      }
-    }
-  }
-`;
-
-interface RepoListProps {
-  username: string;
-  onSelectRepo: (repo: { owner: string; name: string }) => void;
-}
+import { RepoListProps } from "../types/RepoListTypes";
+import { GET_REPOSITORIES } from "../services/Query";
 
 const RepoList: React.FC<RepoListProps> = ({ username, onSelectRepo }) => {
   const { loading, error, data } = useQuery(GET_REPOSITORIES, {

@@ -1,36 +1,8 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useParams, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
-
-const GET_REPO_DETAILS = gql`
-  query ($owner: String!, $name: String!) {
-    repository(owner: $owner, name: $name) {
-      name
-      description
-      stargazerCount
-      forkCount
-      issues(first: 5) {
-        nodes {
-          title
-          url
-        }
-      }
-      commits: defaultBranchRef {
-        target {
-          ... on Commit {
-            history(first: 5) {
-              nodes {
-                message
-                committedDate
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { GET_REPO_DETAILS } from "../services/Query";
 
 const RepoDetails: React.FC = () => {
   const { owner, name } = useParams<{ owner: string; name: string }>();
@@ -52,12 +24,10 @@ const RepoDetails: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-600 to-blue-500 p-6">
       <div className="border p-6 rounded-lg shadow-lg bg-white text-gray-800 w-full max-w-2xl">
-        {/* Back button */}
         <button
-          onClick={() => navigate(-1)} // Navigate to the previous page
+          onClick={() => navigate(-1)}
           className="flex items-center text-white bg-gradient-to-r from-blue-400 to-indigo-600 hover:from-blue-500 hover:to-indigo-700 py-2 px-4 rounded-full mb-4 focus:outline-none"
         >
-          {/* Back Icon (SVG) */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 mr-2"
