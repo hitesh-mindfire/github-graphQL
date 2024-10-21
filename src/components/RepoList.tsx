@@ -27,10 +27,10 @@ const RepoList: React.FC<RepoListProps> = ({ username, onSelectRepo }) => {
           key={repo.name}
           className="border border-gray-300 p-4 rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-blue-600 text-white cursor-pointer hover:bg-gradient-to-l hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105"
           onClick={() => onSelectRepo({ owner: username, name: repo.name })}
-          style={{ height: "150px" }}
+          style={{ height: "160px" }}
         >
           <h2 className="text-2xl font-semibold mb-1">{repo.name}</h2>
-          <p className="text-gray-200">
+          <p className="text-gray-200 h-14">
             {repo.description || "No description available"}
           </p>
           <div className="mt-2 text-sm">
